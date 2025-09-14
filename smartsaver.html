@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Saver - Credit Life Insurance | R2 Solutions</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Futura:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* R2 Solutions Color Palette */
+        :root {
+            --primary-dark: #0D0D0D;
+            --primary-blue: #3C4E59;
+            --primary-gold: #D9A443;
+            --text-dark: #0D0D0D;
+            --text-gray: #666;
+            --background-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* R2 Solutions Header */
+        .brand-header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(13, 13, 13, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .brand-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-graphic {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: end;
+            gap: 3px;
+            height: 30px;
+        }
+
+        .bar {
+            border-radius: 2px;
+        }
+
+        .bar1 {
+            width: 6px;
+            height: 12px;
+            background: var(--primary-gold);
+        }
+
+        .bar2 {
+            width: 6px;
+            height: 18px;
+            background: var(--primary-gold);
+        }
+
+        .bar3 {
+            width: 6px;
+            height: 24px;
+            background: var(--primary-blue);
+        }
+
+        .bar4 {
+            width: 6px;
+            height: 30px;
+            background: var(--primary-gold);
+        }
+
+        .r2-text {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .company-info {
+            text-align: left;
+        }
+
+        .company-name {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        .company-tagline {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* Header Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(13, 13, 13, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(13, 13, 13, 0.3);
+            background: #E6B659;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cashback-visual {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(217, 164, 67, 0.3);
+            text-align: center;
+        }
+
+        .cashback-amounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .amount-box {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(13, 13, 13, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .amount-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(217, 164, 67, 0.2);
+        }
+
+        .year-label {
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .percentage {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+        }
+
+        .description {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--background-light);
+        }
+
+        .section-title {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            text-align: center;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(13, 13, 13, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-gold);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(13, 13, 13, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Refund Options Section */
+        .refund-options {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .refund-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .refund-card {
+            background: var(--background-light);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .refund-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-gold));
+        }
+
+        .refund-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 13, 13, 0.15);
+            border-color: var(--primary-gold);
+        }
+
+        .refund-card.featured {
+            background: linear-gradient(135deg, var(--primary-gold), #E6B659);
+            color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .refund-card.featured::before {
+            background: var(--primary-dark);
+        }
+
+        .refund-year {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .refund-card.featured .refund-year {
+            color: var(--primary-dark);
+        }
+
+        .refund-percentage {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .refund-card.featured .refund-percentage {
+            color: white;
+        }
+
+        .refund-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .refund-card.featured .refund-label {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Steps Section */
+        .steps {
+            padding: 100px 0;
+            background: var(--background-light);
+        }
+
+        .steps-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-gold));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin: 0 40px;
+            box-shadow: 0 10px 30px rgba(60, 78, 89, 0.3);
+        }
+
+        .step-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            flex: 1;
+            box-shadow: 0 5px 20px rgba(13, 13, 13, 0.1);
+        }
+
+        .step h3 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .step-duration {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Example Section */
+        .example {
+            padding: 100px 0;
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .example-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .example-header h2 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .example-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .example-content {
+            background: var(--background-light);
+            padding: 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(13, 13, 13, 0.1);
+        }
+
+        .timeline-section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .persona-intro {
+            background: var(--primary-blue);
+            color: white;
+            padding: 30px 40px;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .persona-intro strong {
+            color: var(--primary-gold);
+        }
+
+        .timeline-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .timeline-bar {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-gold) 100%);
+            z-index: 1;
+        }
+
+        .timeline-point {
+            background: white;
+            border: 4px solid var(--primary-gold);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            z-index: 2;
+            position: relative;
+        }
+
+        .timeline-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .timeline-label {
+            text-align: center;
+            width: 120px;
+        }
+
+        .year-marker {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .event-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .fund-value-section {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 30px 40px;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .fund-value-item {
+            text-align: center;
+        }
+
+        .fund-label {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .fund-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .cashback-highlight {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .example-notes {
+            background: white;
+            padding: 30px 40px;
+            border-top: 1px solid #ddd;
+            margin: 0;
+        }
+
+        .example-notes h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .example-notes ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .example-notes li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .example-notes li:before {
+            content: "• ";
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .contact p {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .contact-button {
+            background: var(--primary-gold);
+            color: var(--primary-dark);
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(13, 13, 13, 0.2);
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(13, 13, 13, 0.3);
+            background: #E6B659;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .step {
+                flex-direction: column !important;
+                text-align: center;
+            }
+
+            .step-number {
+                margin: 0 0 20px 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .refund-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo-section {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .brand-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .timeline-visual {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .timeline-bar {
+                display: none;
+            }
+
+            .timeline-labels {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .fund-value-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cashback-amounts {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card,
+        .refund-card,
+        .step,
+        .amount-box {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .step:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: var(--background-light);
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(13, 13, 13, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-gold);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 20px 60px rgba(13, 13, 13, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .faq-question {
+            padding: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question h3 {
+            font-family: 'Futura', 'Arial Black', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin: 0;
+            font-weight: 700;
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .faq-toggle {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(217, 164, 67, 0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: var(--background-light);
+        }
+
+        .faq-answer p {
+            padding: 0 30px 30px;
+            margin: 0;
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--background-light);
+            border-bottom: 1px solid rgba(217, 164, 67, 0.2);
+        }
+
+        /* Responsive FAQ */
+        @media (max-width: 768px) {
+            .faq-question {
+                padding: 25px 20px;
+            }
+
+            .faq-question h3 {
+                font-size: 1.1rem;
+                padding-right: 15px;
+            }
+
+            .faq-answer p {
+                padding: 0 20px 25px;
+                font-size: 0.95rem;
+            }
+
+            .faq-toggle {
+                font-size: 1.5rem;
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- R2 Solutions Header -->
+    <header class="brand-header">
+        <div class="container">
+            <div class="brand-content">
+                <div class="logo-section">
+                    <div class="logo-graphic">
+                        <div class="chart-bars">
+                            <div class="bar bar1"></div>
+                            <div class="bar bar2"></div>
+                            <div class="bar bar3"></div>
+                            <div class="bar bar4"></div>
+                        </div>
+                        <div class="r2-text"></div>
+                    </div>
+                    <div class="company-info">
+                        <h1 class="company-name">R2 SOLUTIONS</h1>
+                        <p class="company-tagline">Your Reliable Resource</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Smart Saver</h1>
+                    <p><strong>Getting a loan for your dream house, new car, or business expansion?</strong> Your bank
+                        will require credit life insurance that costs hundreds of thousands.</p>
+                    <p><strong>Here's what they don't tell you:</strong> Most of the time traditional credit life
+                        insurance ONLY protects your
+                        loan and nothing else. You pay premiums for years, and when your loan ends, you get
+                        zero in return.</p>
+                    <p><strong>Smart Saver is your best option.</strong> Our supplementary contract offers money-back
+                        guarantee with same coverage, and better protection.</p>
+                    <p><strong>SAVE SMARTER, GET SMART SAVER!</strong></p>
+                    <a href="#features" class="cta-button">Get Started Today</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="cashback-visual">
+                        <div class="cashback-amounts">
+                            <div class="amount-box">
+                                <div class="year-label">After 5 Years</div>
+                                <div class="percentage">25%</div>
+                                <div class="description">premium refund</div>
+                            </div>
+                            <div class="amount-box">
+                                <div class="year-label">After 7 Years</div>
+                                <div class="percentage">50%</div>
+                                <div class="description">premium refund</div>
+                            </div>
+                            <div class="amount-box">
+                                <div class="year-label">After 9 Years</div>
+                                <div class="percentage">75%</div>
+                                <div class="description">premium refund</div>
+                            </div>
+                            <div class="amount-box">
+                                <div class="year-label">After 10 Years</div>
+                                <div class="percentage">100%</div>
+                                <div class="description">premium refund</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Smart Saver?</h2>
+            <p class="section-subtitle">
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Sure Savings</h3>
+                    <p>Unlike traditional insurance, Smart Saver provides guaranteed premium refund with flexible claim
+                        options.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Enhanced Protection</h3>
+                    <p>Built-in waiver of premiums benefit that covers future premium payments if you become totally
+                        and permanently
+                        disabled, while maintaining full insurance coverage.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Partner Network</h3>
+                    <p>Work with licensed agents from trusted insurance providers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refund Options Section -->
+    <section class="refund-options">
+        <div class="container">
+            <h2 class="section-title">Flexible Refund Options</h2>
+            <p class="section-subtitle">Choose when to claim your premium refund based on your financial needs</p>
+
+            <div class="refund-grid">
+                <div class="refund-card">
+                    <div class="refund-year">5 Years</div>
+                    <div class="refund-percentage">25%</div>
+                    <div class="refund-label">Premium Refund</div>
+                </div>
+
+                <div class="refund-card">
+                    <div class="refund-year">7 Years</div>
+                    <div class="refund-percentage">50%</div>
+                    <div class="refund-label">Premium Refund</div>
+                </div>
+
+                <div class="refund-card">
+                    <div class="refund-year">9 Years</div>
+                    <div class="refund-percentage">75%</div>
+                    <div class="refund-label">Premium Refund</div>
+                </div>
+
+                <div class="refund-card featured">
+                    <div class="refund-year">10 Years</div>
+                    <div class="refund-percentage">100%</div>
+                    <div class="refund-label">Full Premium Refund</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">How Smart Saver Works</h2>
+            <p class="section-subtitle">Simple steps to get Smart Saver through our partner network</p>
+
+            <div class="steps-timeline">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-duration">1-3 Business Days</div>
+                        <h3>Creditor Insurance Requirements</h3>
+                        <p>Confirm with your bank/creditor if they accepts external insurance providers for your loan.
+                            If allowed
+                            we'll help you coordinate with them for specific coverage requirements and beneficiary
+                            designations.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-duration">1-2 Business Days</div>
+                        <h3>Partner Agent Appointment</h3>
+                        <p>Meet with one of our partner agents. They'll assess your
+                            coverage needs and provide quotes for policies that qualifies for Smart Saver
+                            guarantee program.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-duration">1-2 Weeks</div>
+                        <h3>Insurance Policy Application</h3>
+                        <p>Apply for life insurance with loan protection coverage
+                            that meets your bank's requirements.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-duration">1-2 Business Days</div>
+                        <h3>Refund Contract Agreement</h3>
+                        <p>Once your insurance policy is approved, R2 Solutions executes the Smart Saver contract. This
+                            independent agreement guarantees your premium returns with flexible claim options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="example">
+        <div class="container">
+            <div class="example-card">
+                <div class="example-header">
+                    <h2>Smart Saver in Action</h2>
+                    <p>See how Smart Saver program provides guaranteed returns and enhanced insurance coverage
+                    </p>
+                </div>
+
+                <div class="example-content">
+                    <div class="persona-intro">
+                        Transform your insurance expense into a smart investment just like <strong>Maria, a 32-year-old
+                            entrepreneur</strong>, who secured a ₱2M business loan. Instead of having the premiums paid
+                        to her life insurance down the drain, she chose Smart Saver and had multiple options to
+                        <strong>recover her premiums</strong> while maintaining full loan protection.
+                    </div>
+
+                    <div class="timeline-section">
+                        <div class="timeline-visual">
+                            <div class="timeline-bar"></div>
+                            <div class="timeline-point">5Y</div>
+                            <div class="timeline-point">7Y</div>
+                            <div class="timeline-point">9Y</div>
+                            <div class="timeline-point">10Y</div>
+                        </div>
+
+                        <div class="timeline-labels">
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 5</div>
+                                <div class="event-text"><strong>25% refund option (₱30,000)</strong></div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 7</div>
+                                <div class="event-text"><strong>50% refund option (₱60,000)</strong></div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 9</div>
+                                <div class="event-text"><strong>75% refund option (₱90,000)</strong></div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 10</div>
+                                <div class="event-text"><strong>100% refund option (₱120,000)</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fund-value-section">
+                        <div class="fund-value-item">
+                            <div class="fund-label">Total Smart Saver Premiums Paid</div>
+                            <div class="fund-amount">₱120,000</div>
+                        </div>
+                        <div class="fund-value-item">
+                            <div class="fund-label">Flexible Claim Options</div>
+                            <div class="fund-amount">25%-100%</div>
+                        </div>
+                        <div class="fund-value-item">
+                            <div class="cashback-highlight"> Return: ₱120,000</div>
+                        </div>
+                    </div>
+
+                    <div class="example-notes">
+                        <h4>IMPORTANT NOTES:</h4>
+                        <ul>
+                            <li>Smart Saver is independently funded by R2 Solutions, not by any insurance company</li>
+                            <li>Your insurance coverage is from the insurance company; returns are guaranteed by R2
+                                Solutions, subject to contract terms and conditions</li>
+                            <li>Claiming Smart Saver refund terminates only the supplementary contract, not your life
+                                insurance policy</li>
+                            <li>You can choose when to claim based on your financial needs - early partial refunds or
+                                wait for full refund</li>
+                            <li>Actual premiums may vary based on coverage amount and the insurance provider's risk
+                                assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-card" style="margin-top: 60px;">
+                <div class="example-header">
+                    <h2>Smart Saver: Waiver of Premiums + Flexible Returns</h2>
+                    <p>Premium protection during disability while maintaining flexible refund options</p>
+                </div>
+                <div class="example-content">
+                    <div class="persona-intro">
+                        Paul, a 38-year-old father, got approved for ₱1.5M housing loan payable in 10 years and added
+                        Smart Saver to his Mortgage
+                        Redemption Insurance (MRI) with ₱12,000 annual premium. In Year 6, Paul suffered a stroke that
+                        left him
+                        permanently disabled and unable to work. Thanks to Smart Saver's <strong>waiver of premiums
+                            benefit</strong> requirement,
+                        Paul no longer had to pay the remaining ₱48,000 in premiums for the next 4 years. He chose to
+                        claim his
+                        <strong>75% premium refund of ₱54,000 in Year 9</strong> to help with medical expenses, while
+                        his insurance coverage remained fully active without any additional premium payments.
+                    </div>
+
+                    <div class="timeline-section">
+                        <div class="timeline-visual">
+                            <div class="timeline-bar"></div>
+                            <div class="timeline-point">Start</div>
+                            <div class="timeline-point">6Y</div>
+                            <div class="timeline-point">9Y</div>
+                            <div class="timeline-point">10Y</div>
+                        </div>
+                        <div class="timeline-labels">
+                            <div class="timeline-label">
+                                <div class="year-marker">Policy Start</div>
+                                <div class="event-text"><strong> Paul gets MRI (12k per annum) + Smart Saver
+                                        contract</strong></div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 6</div>
+                                <div class="event-text"><strong>Paul becomes disabled - premiums waived</strong></div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 9</div>
+                                <div class="event-text"><strong>Paul claims 75% of premiums paid (₱54,000)</strong>
+                                </div>
+                            </div>
+                            <div class="timeline-label">
+                                <div class="year-marker">Year 10</div>
+                                <div class="event-text"><strong>Loan fully paid, and insurance coverage still
+                                        continues</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fund-value-section">
+                        <div class="fund-value-item">
+                            <div class="fund-label">Premiums Saved (Waiver)</div>
+                            <div class="fund-amount">₱48,000</div>
+                        </div>
+                        <div class="fund-value-item">
+                            <div class="fund-label">Refund Claimed (Year 9)</div>
+                            <div class="fund-amount">₱54,000</div>
+                        </div>
+                        <div class="fund-value-item">
+                            <div class="cashback-highlight">Total Financial Relief: <strong>₱102,000</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="example-notes">
+                        <h4>IMPORTANT NOTES:</h4>
+                        <ul>
+                            <li>Waiver of premiums activates upon total & permanent disability, covering future premium
+                                payments for insurance in this case MRI</li>
+                            <li>Partial refunds can still be claimed even after waiver of premiums benefit is used</li>
+                            <li>Smart Saver requires underlying life insurance to have waiver of premiums feature added
+                            </li>
+                            <li>The 75% refund is calculated from actual premiums paid before disability (6 years ×
+                                ₱12,000 = ₱72,000 × 75% = ₱54,000)</li>
+                            <li>Total financial relief includes both waived future premiums (₱48,000) and refund of past
+                                premiums (₱54,000)</li>
+                            <li>Actual benefits and premiums may vary based on policy details and the insurance
+                                provider's disability definitions
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- END OF PAUL EXAMPLE -->
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Get answers to common questions about Smart Saver</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is Smart Saver and how is it different from regular credit life insurance?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Smart Saver is a supplementary contract that guarantees premium refunds for your credit life
+                            insurance. Unlike traditional credit life insurance where you lose all premiums when your
+                            loan
+                            ends, Smart Saver allows you to recover 25% to 100% of your premiums at different time
+                            intervals
+                            while maintaining full insurance coverage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the most common real-world situations where Smart Saver provides the best value?
+                        </h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>1. Housing Loans (15-30 years):</strong> Long-term mortgages where you recover
+                            ₱500K-₱1M+ in premiums
+                            instead of losing them.<br><br>
+                            <strong>2. Business Expansion Loans:</strong> Entrepreneurs who want to reinvest recovered
+                            premiums back
+                            into business growth.<br><br>
+                            <strong>3. Multi-Property Investments:</strong> Real estate investors minimizing total
+                            insurance costs
+                            across multiple loans.<br><br>
+                            <strong>4. Young Professionals:</strong> 25-35 year-olds with car/home loans who benefit
+                            from decades of
+                            premium recovery.<br><br>
+                            <strong>5. OFWs with Family Obligations:</strong> Overseas workers recovering premiums to
+                            support
+                            dependents' education and family needs.<br><br>
+                            <strong>6. Growing Families:</strong> Parents wanting loan protection now but needing funds
+                            back later for
+                            children's education.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Who provides the insurance coverage and who guarantees the refund?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your life insurance coverage is provided by licensed insurance companies through our partner
+                            network. The premium refund guarantee is independently funded and provided by R2 Solutions
+                            through a separate supplementary contract, subject to terms and conditions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I claim partial refunds and still get more money back later?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, claiming any refund terminates your Smart Saver contract. However, your life insurance
+                            policy continues to be in force. You can choose the timing that best suits your financial
+                            needs, whether that's 25% after 5 years, 50% after 7 years, 75% after 9 years, or 100% after
+                            10 years.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens if I become disabled and can't pay premiums?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Smart Saver requires your underlying life insurance to include waiver of premiums benefit. If
+                            you
+                            become totally and permanently disabled, future premium payments are waived while your
+                            insurance
+                            coverage continues. You can still claim Smart Saver refunds based on actual premiums you
+                            paid
+                            before the disability occurred.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Will my bank accept external insurance providers for my loan?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>This varies by bank and loan type. Our first step is always to confirm with your creditor if
+                            they
+                            accept external insurance providers. If allowed, we help coordinate with them for specific
+                            coverage requirements and beneficiary designations to ensure your loan is properly
+                            protected.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How are the refund percentages calculated?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Refund percentages are calculated based on actual premiums paid towards your insurance
+                            policy. For example, if you paid ₱12,000 annually for 6 years (₱72,000 total), a
+                            75% refund would be ₱54,000. The calculation is based on your actual payment history, not
+                            theoretical full-term amounts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if I pay off my loan early or want to cancel?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you pay off your loan early, your life insurance policy terms will depend on the insurance
+                            provider's conditions. Your Smart Saver contract remains separate - you can still claim
+                            refunds
+                            based on the time elapsed and actual premiums paid, subject to the contract terms and
+                            conditions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there any fees or charges for Smart Saver?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>There are no fees charged to clients for Smart Saver contracts. R2 Solutions operates by
+                            charging service fees to our affiliated insurance agents, as we also provide lead generation
+                            services when they partner with us. Clients pay premiums directly to their insurance
+                            provider,
+                            and there are no additional processing fees for claiming your refunds.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens if R2 Solutions faces financial difficulties?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Protection mechanisms are detailed in the contract terms and conditions. As a growing
+                            company,
+                            we're continuously strengthening our financial foundation and exploring additional
+                            safeguards
+                            for client interests. We recommend reviewing the complete contract terms with our agents.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I switch insurance providers and keep my Smart Saver benefits?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, the Smart Saver contract is tied to the specific insurance policy arranged through our
+                            partner network. Changing insurance providers will void the Smart Saver contract. However,
+                            you
+                            can claim any eligible refunds before making such changes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does Smart Saver compare cost-wise to regular term life insurance?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>Example: ₱3M Loan Coverage, 46-year-old Male</strong><br><br>
+                            <strong>Regular Credit Life Insurance with Waiver:</strong><br>
+                            • Annual Premium: ~₱25,000-₱30,000<br>
+                            • 10-year Total Cost: ₱250,000-₱300,000<br>
+                            • Amount Recovered: ₱0<br><br>
+                            <strong>Smart Saver Program:</strong><br>
+                            • Annual Premium: ~₱27,000<br>
+                            • 10-year Total Cost: ~₱270,000<br>
+                            • Amount Recovered: ~₱270,000 (100%)<br><br>
+                            <strong>Net Difference:</strong> Smart Saver costs almost the same annually compared to
+                            regular credit life insurance but guarantees full premium recovery. Instead of losing up to
+                            ₱300,000, you get it all back which makes it essentially free insurance protection.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there medical or lifestyle exclusions in Smart Saver contracts?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, specific exclusions and conditions are detailed in the contract terms. These are
+                            designed to
+                            ensure program sustainability while protecting legitimate client interests. All exclusions
+                            will
+                            be clearly explained during the consultation process.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What legal protection do I have with my Smart Saver contract?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All Smart Saver contracts are legally binding agreements. Clients can request notarized
+                            contracts
+                            for additional legal strength. As with any contract, standard legal remedies apply in case
+                            of
+                            disputes, and we're committed to honoring our contractual obligations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are Smart Saver refunds considered taxable income?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Smart Saver is designed as a return of capital structure, where refunds represent a return of
+                            your own premium payments rather than investment gains. This design may provide favorable
+                            tax treatment, though refunds are paid in full amounts as specified in your contract. Tax
+                            implications, if any, are the responsibility of the client as R2 Solutions does not provide
+                            tax advice. We recommend consulting with a tax professional regarding your specific
+                            situation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can banks or creditors claim my Smart Saver refunds if I face financial difficulties?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, Smart Saver agreement is a private contract between R2 Solutions and the client. However,
+                            we recommend consulting with a legal professional about your specific financial situation
+                            and applicable laws regarding asset protection.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I get Smart Saver without a loan or credit life insurance requirement?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, Smart Saver is designed as a supplementary contract that works alongside credit
+                            life insurance required by banks and creditors for loans. It cannot be obtained as a
+                            standalone product since it's specifically structured to enhance the value of mandatory
+                            credit life insurance that you're already required to purchase for your loan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of smart Filipinos who are protecting their families while saving money with Smart Saver's
+                flexible refund options.
+            </p>
+            <a href="https://calendly.com/contact-r2solutions/30min" class="contact-button" target="_blank"
+                rel="noopener noreferrer">Schedule an Appointment</a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards and steps
+        document.querySelectorAll('.feature-card, .refund-card, .step, .amount-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Interactive hover effects for amount boxes and refund cards
+        document.querySelectorAll('.amount-box, .refund-card').forEach(box => {
+            box.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.05) translateY(-5px)';
+                this.style.boxShadow = '0 15px 40px rgba(217, 164, 67, 0.2)';
+            });
+
+            box.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) translateY(0)';
+                this.style.boxShadow = '0 10px 30px rgba(13, 13, 13, 0.1)';
+            });
+        });
+
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                    });
+
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
